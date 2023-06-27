@@ -1,32 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+    <title>Transcript Separator</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-    <h1>Meeting Transcript Sectioner</h1>
-
-    <div class="inputArea">
-        <h2>Transcription</h2>
-        <textarea id="transcript" rows="10" cols="100"></textarea>
-    </div>
-
-    <div class="inputArea">
-        <h2>Summary</h2>
-        <textarea id="summary" rows="10" cols="100"></textarea>
-    </div>
-
-    <button id="runBtn">Run</button>
-
-    <div id="outputArea">
-        <!-- Generated sections will appear here -->
-    </div>
-
     <div class="container">
-    <textarea id="transcript" class="transcript-box" rows="10" cols="50" placeholder="Transcript here..."></textarea>
-    <textarea id="summary" class="summary-box" rows="10" cols="50" placeholder="Summary here..."></textarea>
-    <button id="runBtn" class="btn">Run</button>
-    <div id="outputArea" class="output-area"></div>
-
+        <textarea id="transcript" class="transcript-box" rows="10" cols="50" placeholder="Transcript here..."></textarea>
+        <textarea id="summary" class="summary-box" rows="10" cols="50" placeholder="Summary here..."></textarea>
+        <button id="runBtn" class="btn">Run</button>
+        <div id="outputArea" class="output-area"></div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
