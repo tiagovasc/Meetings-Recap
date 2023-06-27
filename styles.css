@@ -1,0 +1,17 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.inputArea {
+    margin-bottom: 20px;
+}
+
+#outputArea {
+    margin-top: 20px;
+}
+
+#runBtn {
+    margin: 20px 0;
+    padding: 10px 20px;
+    font-size: 18px;
+}
