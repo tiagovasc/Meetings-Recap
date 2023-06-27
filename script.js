@@ -9,23 +9,33 @@ window.onload = function() {
         var summaries = [];
         summary.forEach(function(line) {
             var timestamps = line.match(/(\d+:\d+)/g);
-            summaries.push({start: timestamps[0], end: timestamps[1]});
+            if (timestamps && timestamps.length > 0) {
+                summaries.push(timestamps[0]);
+            }
         });
 
         var currentSummary = 0;
         var currentTranscript = "";
         transcript.forEach(function(line) {
-            var timestamp = line.match(/(\d+:\d+)/g)[0];
-            if (timestamp == summaries[currentSummary].start) {
-                currentTranscript += line + "\n";
-            } else if (timestamp == summaries[currentSummary].end) {
-                appendTranscript(currentTranscript);
-                currentSummary++;
-                currentTranscript = "";
-            } else if (currentTranscript != "") {
+            var timestamp = line.match(/(\d+:\d+)/g);
+            if (timestamp) {
+                timestamp = timestamp[0];
+                if (timestamp == summaries[currentSummary]) {
+                    if (currentTranscript != "") {
+                        appendTranscript(currentTranscript);
+                        currentTranscript = "";
+                    }
+                    currentSummary++;
+                }
+            }
+            if (currentSummary > 0) {
                 currentTranscript += line + "\n";
             }
         });
+        // Append the last transcript section
+        if (currentTranscript != "") {
+            appendTranscript(currentTranscript);
+        }
 
         function appendTranscript(text) {
             // Create new textarea for the section
