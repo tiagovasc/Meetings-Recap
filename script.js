@@ -54,6 +54,28 @@ window.onload = function() {
                 document.execCommand("copy");
             }
             outputArea.appendChild(button);
+
+
+            function appendTranscript(text) {
+    // Create new textarea for the section
+    var textarea = document.createElement("textarea");
+    textarea.className = "output-box";
+    textarea.rows = 10;
+    textarea.cols = 100;
+    textarea.value = text;
+    outputArea.appendChild(textarea);
+
+    // Create new copy button for the section
+    var button = document.createElement("button");
+    button.className = "btn";
+    button.innerHTML = "Copy";
+    button.onclick = function() {
+        textarea.select();
+        document.execCommand("copy");
+    }
+    outputArea.appendChild(button);
+}
+
         }
     }
 }
