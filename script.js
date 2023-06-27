@@ -6,32 +6,33 @@ window.onload = function() {
         var outputArea = document.getElementById("outputArea");
         outputArea.innerHTML = ""; // Clear previous results
 
-        var summaries = [];
+        var timestamps = [];
         summary.forEach(function(line) {
-            var timestamps = line.match(/(\d+:\d+)/g);
-            if (timestamps && timestamps.length > 0) {
-                summaries.push(timestamps[0]);
+            var timestamp = line.match(/(\d+:\d+)/g);
+            if (timestamp) {
+                timestamps.push(timestamp[0]);
             }
         });
 
-        var currentSummary = 0;
+        var currentTimestampIndex = 0;
         var currentTranscript = "";
         transcript.forEach(function(line) {
             var timestamp = line.match(/(\d+:\d+)/g);
             if (timestamp) {
                 timestamp = timestamp[0];
-                if (timestamp == summaries[currentSummary]) {
+                if (timestamp == timestamps[currentTimestampIndex]) {
                     if (currentTranscript != "") {
                         appendTranscript(currentTranscript);
                         currentTranscript = "";
                     }
-                    currentSummary++;
+                    currentTimestampIndex++;
                 }
             }
-            if (currentSummary > 0) {
+            if (currentTimestampIndex > 0) {
                 currentTranscript += line + "\n";
             }
         });
+
         // Append the last transcript section
         if (currentTranscript != "") {
             appendTranscript(currentTranscript);
